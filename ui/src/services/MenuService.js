@@ -5,6 +5,7 @@ export async function getAllItems() {
     return await response.json();
 }
 
+
 // export async function createTask(data) {
 //     const response = await fetch(`/api/task`, {
 //         method: 'POST',

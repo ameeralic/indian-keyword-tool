@@ -2,6 +2,7 @@ const { log } = require('console');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const authRouter = require('./routes/auth');
 
 const app = express();
 if (process.env.ENVIRONMENT !== 'production') {
@@ -10,12 +11,16 @@ if (process.env.ENVIRONMENT !== 'production') {
 
 app.use(bodyParser.json());
 
+// app.use(express.json());
+
 
 console.log('PORT:::', process.env.PORT)
 
 const itemController = require('./controller/item.controller')
 
 const port = process.env.PORT || 3080;
+
+app.use('/api/auth', authRouter);
 
 app.get('/api/items', (req, res) => {
     itemController.getItems().then(data => res.json(data));
@@ -38,7 +43,6 @@ app.delete('/api/item/:id', (req, res) => {
 app.get('/', (req, res) => {
     console.log(__dirname);
     res.json('server running')
-    // res.sendFile(path.join(__dirname, '../ui/dist/index.html'));
 });
 
 app.listen(port, () => {

@@ -9,7 +9,7 @@
                         Indian
                     </span>
 
-                    <span class="text-white">Keyword Tool</span>
+                    <span class="dark:text-white text-gray-900">Keyword Tool</span>
                 </div>
                 <form>
                     <div class="grid gap-2">
@@ -24,8 +24,7 @@
                                             stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                     </svg>
                                 </div>
-                                <input type="search" id="default-search"
-                                v-model="keywords"
+                                <input type="search" id="default-search" v-model="keywords"
                                     class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Enter your Keyword.." required>
                                 <!-- <button type="submit"
@@ -61,9 +60,8 @@
                                                         d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                                                 </svg>
                                             </div>
-                                            <input type="text" id="input-group-search"
-                                            v-model="GeoSearch"
-                                            @change="filterGeoCodes()"
+                                            <input type="text" id="input-group-search" v-model="GeoSearch"
+                                                @change="filterGeoCodes()"
                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                 placeholder="Search regions">
                                         </div>
@@ -73,88 +71,24 @@
                                         <li v-for="item in GeoFilterCode" :key="item">
                                             <div
                                                 class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                <input id="checkbox-item-11" type="checkbox" value=""
+                                                <input id="checkbox-item-11" type="checkbox" :value="item"
+                                                    v-model="selectedLocationsArray"
                                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                <!-- <input id="checkbox-item-11" type="checkbox"
+                                                    :value="'geoTargetConstants/' + item['Criteria ID']"
+                                                    v-model="selectedGeoCodesArray"
+                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"> -->
                                                 <label for="checkbox-item-11"
                                                     class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">
                                                     {{ item["Canonical Name"] }}</label>
                                             </div>
                                         </li>
-                                        <!-- <li>
-                                            <div
-                                                class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                <input checked id="checkbox-item-12" type="checkbox" value=""
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                                <label for="checkbox-item-12"
-                                                    class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Jese
-                                                    Leos</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div
-                                                class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                <input id="checkbox-item-13" type="checkbox" value=""
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                                <label for="checkbox-item-13"
-                                                    class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Michael
-                                                    Gough</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div
-                                                class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                <input id="checkbox-item-14" type="checkbox" value=""
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                                <label for="checkbox-item-14"
-                                                    class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Robert
-                                                    Wall</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div
-                                                class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                <input id="checkbox-item-15" type="checkbox" value=""
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                                <label for="checkbox-item-15"
-                                                    class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Joseph
-                                                    Mcfall</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div
-                                                class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                <input id="checkbox-item-16" type="checkbox" value=""
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                                <label for="checkbox-item-16"
-                                                    class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Leslie
-                                                    Livingston</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div
-                                                class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                                <input id="checkbox-item-17" type="checkbox" value=""
-                                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                                <label for="checkbox-item-17"
-                                                    class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Roberta
-                                                    Casas</label>
-                                            </div>
-                                        </li> -->
                                     </ul>
-                                    <!-- <a href="#"
-                                    class="flex items-center p-3 text-sm font-medium text-red-600 border-t border-gray-200 rounded-b-lg bg-gray-50 dark:border-gray-600 hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-red-500 hover:underline">
-                                    <svg class="w-4 h-4 mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor" viewBox="0 0 20 18">
-                                        <path
-                                            d="M6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Zm11-3h-6a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2Z" />
-                                    </svg>
-                                    Delete user
-                                </a> -->
                                 </div>
                             </div>
 
                             <div>
-                                <button type="button"
+                                <button type="button" @click.prevent="submit()"
                                     class="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-4 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Search</button>
                             </div>
 
@@ -166,18 +100,36 @@
                 </form>
             </div>
 
-            <div class="max-w-4xl mx-auto mt-20">
+            <div class="max-w-4xl mx-auto mt-20" v-if="results.length">
                 <h1 class="text-white text-xl font-bold text-center py-5">Results</h1>
+                <div class="max-w-xl mx-auto flex justify-between py-10 gap-4">
+                    <div>
+                        <h2 class="dark:text-white text-gray-700 ">
+                            <span class="font-bold">Keywords: </span><br /> {{ searchedKeywords }}
+                        </h2>
+
+                    </div>
+                    <div>
+                        <h2 class="dark:text-white text-gray-700 ">
+                            <span class="font-bold">Locations: </span>
+                            <ul>
+                                <li v-for="location in searchedLocations" :key="location">{{ location }}</li>
+                            </ul>
+                        </h2>
+                    </div>
+                </div>
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
-                                    Product name
+                                    Keyword
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    <div class="flex items-center">
-                                        Color
+                                    <div class="flex items-center cursor-pointer"
+                                        :class="{ 'text-white': toggleSortByAvgMonthlySearch }"
+                                        @click.prevent="toggleSortByAvgMonthlySearch = !toggleSortByAvgMonthlySearch">
+                                        Avg. Monthly Search
                                         <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                                 <path
@@ -187,85 +139,43 @@
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     <div class="flex items-center">
-                                        Category
+                                        Competition
+                                        <!-- <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
+                                            </svg></a> -->
+                                    </div>
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    <div class="flex items-center cursor-pointer"
+                                        :class="{ 'text-white': toggleSortByCompetitionIndex }"
+                                        @click.prevent="toggleSortByCompetitionIndex = !toggleSortByCompetitionIndex">
+                                        Competion Index
                                         <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                                 <path
                                                     d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
                                             </svg></a>
                                     </div>
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    <div class="flex items-center">
-                                        Price
-                                        <a href="#"><svg class="w-3 h-3 ml-1.5" aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                                <path
-                                                    d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-                                            </svg></a>
-                                    </div>
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    <span class="sr-only">Edit</span>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                                v-for="keywordMetric in results" :key="keywordMetric">
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Apple MacBook Pro 17"
+                                    {{ keywordMetric["text"] }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    Silver
+                                    {{ keywordMetric.keywordIdeaMetrics.avgMonthlySearches }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    Laptop
+                                    {{ keywordMetric.keywordIdeaMetrics.competition }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    $2999
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <a href="#"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Microsoft Surface Pro
-                                </th>
-                                <td class="px-6 py-4">
-                                    White
-                                </td>
-                                <td class="px-6 py-4">
-                                    Laptop PC
-                                </td>
-                                <td class="px-6 py-4">
-                                    $1999
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <a href="#"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                </td>
-                            </tr>
-                            <tr class="bg-white dark:bg-gray-800">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    Magic Mouse 2
-                                </th>
-                                <td class="px-6 py-4">
-                                    Black
-                                </td>
-                                <td class="px-6 py-4">
-                                    Accessories
-                                </td>
-                                <td class="px-6 py-4">
-                                    $99
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <a href="#"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    {{ keywordMetric.keywordIdeaMetrics.competitionIndex }}
                                 </td>
                             </tr>
                         </tbody>
@@ -293,32 +203,101 @@ onMounted(() => {
 })
 </script>
 <script>
+import axios from "axios"
 import vSelect from "vue-select"
 export default {
     data() {
         return {
-            keywords:'',
+            keywords: '',
+            searchedKeywords: '',
+            searchedLocations: '',
             GeoCodes: GeoTargetCodes,
-            GeoSearch:'',
-            GeoFilterCode:GeoTargetCodes
+            GeoSearch: '',
+            selectedLocationsArray: [],
+            GeoFilterCode: GeoTargetCodes,
+            results: [],
+            toggleSortByAvgMonthlySearch: false,
+            toggleSortByCompetitionIndex: false,
         }
     },
-    components:{
-    vSelect
-  },
-    computed:{
-        keywordsArray(){
-            return this.keyword.split(',')
+    components: {
+        vSelect
+    },
+    computed: {
+        keywordsArray() {
+            return this.keywords.split(',')
         },
     },
+    watch: {
+        // whenever question changes, this function will run
+        toggleSortByAvgMonthlySearch(newValue, oldValue) {
+            if (newValue === true) {
+                this.sortByAvgMonthlySearchDsc()
+            } else {
+                this.sortByAvgMonthlySearchAsc()
+            }
+        },
+        toggleSortByCompetitionIndex(newValue, oldValue) {
+            if (newValue === true) {
+                this.sortByCompetitionIndexDsc()
+            } else {
+                this.sortByCompetitionIndexAsc()
+            }
+        }
+    },
     methods: {
-        filterGeoCodes(){
+        selectedLocationNames() {
+            return this.selectedLocationsArray.map((item) =>
+                item["Canonical Name"]
+            )
+        },
+        selectedGeoCodesArray() {
+            return this.selectedLocationsArray.map((item) =>
+                'geoTargetConstants/' + item['Criteria ID']
+            )
+        },
+        filterGeoCodes() {
             console.log(this.GeoSearch);
             this.GeoFilterCode = this.GeoSearch !== '' ? this.GeoCodes.filter(item => {
                 var text = item["Canonical Name"]
                 return text.startsWith(this.GeoSearch)
-                // console.log(text.startsWith(this.GeoSearch));
             }) : this.GeoCodes
+        },
+        async submit() {
+            this.results = []
+            console.log(this.selectedLocationsArray);
+            console.log(this.selectedGeoCodesArray());
+            var data =
+            {
+                "geo_target_constants": JSON.stringify(this.selectedGeoCodesArray()),
+                "keywords": JSON.stringify(this.keywordsArray),
+            }
+            const response = await axios.post("/api/getKeywordIdeas", data)
+            this.results = response.data
+            this.toggleSortByAvgMonthlySearch = true
+            this.searchedKeywords = this.keywords
+            this.searchedLocations = this.selectedLocationNames()
+            console.log(response.data);
+        },
+        sortByAvgMonthlySearchAsc() {
+            this.results.sort((a, b) => {
+                return a.keywordIdeaMetrics.avgMonthlySearches - b.keywordIdeaMetrics.avgMonthlySearches;
+            });
+        },
+        sortByAvgMonthlySearchDsc() {
+            this.results.sort((a, b) => {
+                return b.keywordIdeaMetrics.avgMonthlySearches - a.keywordIdeaMetrics.avgMonthlySearches;
+            });
+        },
+        sortByCompetitionIndexAsc() {
+            this.results.sort((a, b) => {
+                return a.keywordIdeaMetrics.competitionIndex - b.keywordIdeaMetrics.competitionIndex;
+            });
+        },
+        sortByCompetitionIndexDsc() {
+            this.results.sort((a, b) => {
+                return b.keywordIdeaMetrics.competitionIndex - a.keywordIdeaMetrics.competitionIndex;
+            });
         }
     },
 }
